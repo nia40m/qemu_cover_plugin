@@ -1,11 +1,9 @@
 #include <inttypes.h>
-#include <assert.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <glib.h>
 
 #include <qemu-plugin.h>
 
