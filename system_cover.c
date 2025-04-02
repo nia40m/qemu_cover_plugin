@@ -98,8 +98,13 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
     struct data_t *data = get_data_elem();
 
     data->addr = qemu_plugin_tb_vaddr(tb);
-    data->size = qemu_plugin_tb_n_insns(tb);
+    data->size = 0;
     data->cnt = 0;
+
+    /* calculate basic block size in bytes */
+    for (size_t i = 0; i < qemu_plugin_tb_n_insns(tb); i++) {
+        data->size += qemu_plugin_insn_size(qemu_plugin_tb_get_insn(tb, i));
+    }
 
     qemu_plugin_register_vcpu_tb_exec_inline(tb, QEMU_PLUGIN_INLINE_ADD_U64,
                                              &data->cnt, 1);
