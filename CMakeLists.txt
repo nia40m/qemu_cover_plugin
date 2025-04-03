@@ -12,3 +12,7 @@ add_library(system_cover SHARED
 target_include_directories(system_cover PRIVATE
     ${QEMU_ROOT}/include/qemu
 )
+
+target_compile_definitions(system_cover PRIVATE
+    PLUGIN_VERSION="${PROJECT_VERSION}"
+)

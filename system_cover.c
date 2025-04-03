@@ -10,8 +10,6 @@
 #define likely(x)       __builtin_expect(!!(x), 1)
 #define unlikely(x)     __builtin_expect(!!(x), 0)
 
-#define PLUGIN_VERSION      "0.1.0"
-
 const char description[] __attribute__ ((section ("plugin_desc"))) =
 "Qemu TCG plugin for collecting coverage information. Ver. "PLUGIN_VERSION
 // this is gcc extension to write multi-line strings (available with gnu99)
